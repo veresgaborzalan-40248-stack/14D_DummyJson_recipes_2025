@@ -3,10 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiRecipes14D2025.Mvvm.View.DetailPage"
              Title="DetailPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <Border VerticalOptions="Fill" HorizontalOptions="Fill" Margin="10" BackgroundColor="{StaticResource Navy}" StrokeShape="RoundRectangle 0,40,40,0">
+            <Grid RowDefinitions=".4*,.1*,.1*,.1*,.1*,.1*">
+                <HorizontalStackLayout Grid.Row="0">
+                    <Label Text="Name:" FontSize="18" TextColor="White" Margin="0,0,2,0"/>
+                    <Label Text="{Binding name}" FontSize="18" TextColor="White" Margin="0,0,2,0"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Grid.Row="1">
+                    <Label Text="Prep time (minutes):" FontSize="18" TextColor="White" Margin="0,0,2,0"/>
+                    <Label Text="{Binding prepTimeMinutes}" FontSize="18" TextColor="White" Margin="0,0,2,0"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Grid.Row="2">
+                    <Label Text="Cook time (minutes):" FontSize="18" TextColor="White" Margin="0,0,2,0"/>
+                    <Label Text="{Binding cookTimeMinutes}" FontSize="18" TextColor="White" Margin="0,0,2,0"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Grid.Row="3">
+                    <Label Text="Servings:" FontSize="18" TextColor="White" Margin="0,0,2,0"/>
+                    <Label Text="{Binding servings}" FontSize="18" TextColor="White" Margin="0,0,2,0"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Grid.Row="4">
+                    <Label Text="Difficulty:" FontSize="18" TextColor="White" Margin="0,0,2,0"/>
+                    <Label Text="{Binding difficulty}" FontSize="18" TextColor="White" Margin="0,0,2,0"/>
+                </HorizontalStackLayout>
+                <Button x:Name="buttonBack" Text="Vissza" TextColor="Black" BackgroundColor="{StaticResource Mauve}" Grid.Row="5" Clicked="buttonBack_Clicked"/>
+            </Grid>
+        </Border>
+    </ScrollView>
 </ContentPage>

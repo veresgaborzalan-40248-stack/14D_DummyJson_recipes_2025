@@ -6,4 +6,9 @@ public partial class DetailPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void buttonBack_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new ListPage());
+    }
 }
