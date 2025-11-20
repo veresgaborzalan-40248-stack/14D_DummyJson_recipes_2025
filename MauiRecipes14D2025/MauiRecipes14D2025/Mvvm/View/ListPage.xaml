@@ -2,11 +2,40 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiRecipes14D2025.Mvvm.View.ListPage"
-             Title="ListPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+                      Title="ListPage" BackgroundColor="{StaticResource Navy}" NavigationPage.HasNavigationBar="False">
+    <Border VerticalOptions="Fill" Margin="10" Stroke="{StaticResource Grey}" BackgroundColor="{StaticResource Navy}" StrokeThickness="2" StrokeShape="RoundRectangle 0,40,40,0">
+        <Grid RowDefinitions=".2*,.7*,.1*">
+            <Label Text="Receptek:" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <CollectionView x:Name="collectionRecipes" Grid.Row="1" SelectionMode="Single" EmptyView="No recipes" SelectionChanged="collectionRecipes_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="2" BackgroundColor="{StaticResource Navy}" StrokeShape="RoundRectangle 80,80,80,80">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal"></VisualState>
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="Black"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid ColumnDefinitions=".3*,.7*">
+                                <HorizontalStackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start">
+                                    <Label Text="{Binding name}" FontSize="20" TextColor="White" Margin="0,0,2,0"/>
+                                </HorizontalStackLayout>
+                                <VerticalStackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Start">
+                                    <Label Text="Ingredients:" FontSize="18"/>
+                                    <Label Text="{Binding ingredients}" FontSize="14" TextColor="White" Margin="0,0,2,0"/>
+                                    <Label Text="Instructions:" FontSize="18"/>
+                                    <Label Text="{Binding instructions}" FontSize="14" TextColor="White" Margin="0,0,2,0"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button x:Name="buttonGet" Text="Letöltés" TextColor="Black" BackgroundColor="{StaticResource Mauve}" Grid.Row="2" Clicked="buttonGet_Clicked"/>
+        </Grid>
+    </Border>
 </ContentPage>

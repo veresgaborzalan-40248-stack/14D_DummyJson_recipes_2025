@@ -1,4 +1,6 @@
-﻿namespace MauiRecipes14D2025
+﻿using MauiRecipes14D2025.Mvvm.View;
+
+namespace MauiRecipes14D2025
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new ListPage());
         }
     }
 }
